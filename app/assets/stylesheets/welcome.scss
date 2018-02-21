@@ -5,3 +5,20 @@
 h1 {
   color: rgb(60, 29, 187);
 }
+
+.social-btn {
+  box-sizing: border-box;
+  background-color: rgb(91, 73, 184);
+  color: rgb(242, 255, 0);
+  display: block;
+  height: auto;
+  width: auto;
+  text-align: center;
+  margin: 5px;
+}
+
+.social-btn:hover {
+  color: white;
+  text-decoration: none;
+  font-size: 1.05em;
+}
