@@ -20,12 +20,21 @@ posts = Post.all
   )
 end
 
-5.times do
-  Post.find_or_create_by!(
-    title: "The Title",
-    body: "The Body"
+10.times do
+  Comment.find_or_create_by!(
+
+    post: posts.sample,
+    body: RandomData.random_paragraph
   )
 end
+puts "#{Post.count}"
+5.times do
+  Post.find_or_create_by!(
+    title: RandomData.random_sentence,
+    body: RandomData.random_paragraph
+  )
+end
+puts "#{Post.count}"
 
 
 puts "Seed finished"
