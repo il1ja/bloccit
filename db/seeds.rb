@@ -12,15 +12,20 @@ end
 posts = Post.all
 
 
-100.times do
-  Comment.create!(
+50.times do
+  Comment.find_or_create_by!(
 
     post: posts.sample,
     body: RandomData.random_paragraph
   )
 end
 
-Post.find_or_create_by!(title: "The Title", body: "The Body")
+5.times do
+  Post.find_or_create_by!(
+    title: "The Title",
+    body: "The Body"
+  )
+end
 
 puts "Seed finished"
 puts "#{Post.count} posts created"
