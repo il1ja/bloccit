@@ -20,7 +20,13 @@ posts = Post.all
   )
 end
 
-Post.find_or_create_by!(title: "The Title", body: "The Body")
+5.times do
+  Post.find_or_create_by!(
+    title: "The Title",
+    body: "The Body"
+  )
+end
+
 
 puts "Seed finished"
 puts "#{Post.count} posts created"
