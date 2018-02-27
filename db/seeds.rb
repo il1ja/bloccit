@@ -12,7 +12,7 @@ end
 posts = Post.all
 
 
-50.times do
+10.times do
   Comment.find_or_create_by!(
 
     post: posts.sample,
@@ -22,8 +22,8 @@ end
 
 5.times do
   Post.find_or_create_by!(
-    title: "The Title",
-    body: "The Body"
+    title: RandomData.random_sentence,
+    body: RandomData.random_paragraph
   )
 end
 
