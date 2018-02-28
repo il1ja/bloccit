@@ -25,6 +25,15 @@ end
 end
 advertisements =  Advertisement.all
 
+50.times do
+  Question.create!(
+    title:  RandomData.random_sentence,
+    body:   RandomData.random_paragraph,
+    resolved: false
+  )
+end
+questions =  Question.all
+
 unique_post = Post.find_or_create_by(title: "First title", body: "A body")
 unique_post_2 = Post.find_or_create_by(title: "second title", body: "A second body")
 unique_post_3 = Post.find_or_create_by(title: "third title", body: "A third body")
@@ -36,6 +45,6 @@ Comment.find_or_create_by(post: unique_post_3, body: 'special comment body 3')
 
 puts "Seed finished"
 puts "#{Advertisement.count} advertisements created"
-
+puts "#{Question.count} questions created"
 puts "#{Post.count} posts created"
 puts "#{Comment.count} comments created"
