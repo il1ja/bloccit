@@ -55,15 +55,15 @@ RSpec.describe AdvertisementsController, type: :controller do
         post :create, params: {advertisement: {title: "Ad Title", cpoy: "Ad Copy",price: 10}}
       end
 
-      # it "assigns the new Ad to @advertisement" do
-      #   post :create, params: {advertisement: {title: "Ad Title", cpoy: "Ad Copy",price: 10}}
-      #   expect(assigns(:post)).to eq Advertisement.last
-      # end
-      #
-      # it "redirect to the new ad" do
-      #   post :create, params: {advertisement: {title: "Ad Title", cpoy: "Ad Copy",price: 10}}
-      #   expect(response).to redirect_to Advertisement.last
-      # end
+      it "assigns the new Ad to @advertisement" do
+        post :create, params: {advertisement: {title: "Ad Title", cpoy: "Ad Copy",price: 10}}
+        expect(assigns(:advertisement)).to eq Advertisement.last
+      end
+
+      it "redirect to the new ad" do
+        post :create, params: {advertisement: {title: "Ad Title", cpoy: "Ad Copy",price: 10}}
+        expect(response).to redirect_to Advertisement.last
+      end
     end
 
 end
