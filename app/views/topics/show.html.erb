@@ -23,10 +23,10 @@
     <% @topic.SponsoredPosts.each do |post| %>
       <div class="media">
         <div class="media-body">
+          <h4 class="media-heading">Sponsored Topic</h4>
           <h4 class="media-heading">
             <%= link_to post.title, topic_post_path(@topic, post) %>
           </h4>
-          <small>
 
         </div>
       </div>
