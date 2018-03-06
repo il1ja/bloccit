@@ -21,6 +21,14 @@ RSpec.describe User, type: :model do
     end
   end
 
+  describe "capitlize each name" do
+    let(:user_downcased) { User.create!(name: "tim toots", email: "user@bloccit.com", password: "password") }
+
+    it "should capitalze the first and last name of the user" do
+      expect(user_downcased).to have_attributes(name: "Tim Toots", email: "user@bloccit.com", password: "password")
+    end
+  end
+
   describe "invalid user" do
     let(:user_with_invalid_name) { User.new(name: "", email: "user@bloccit.com") }
     let(:user_with_invalid_email) { User.new(name: "Bloccit User", email: "") }
