@@ -1,0 +1,19 @@
+<h2> You are confirmed </h2>
+
+<div class="row">
+  <div class="col-md-4">
+    <h3>Is this correct</h3>
+    <p>Name: <% @user.name %> </p>
+    <p>Email: <% @user.email %> </p>
+    <!-- <p>password: <% @user.password %> </p> -->
+  </div>
+
+<div class="row">
+  <div class="form-group">
+    <%= button_to "Yes", { controller: "users", action: "create", params: { user: user_params } }, class: 'btn btn-success' %>  </div>
+</div>
+
+<div class="row">
+  <div class="form-group">
+    <%= button_to "No", { controller: "users", action: "new"}, class: 'btn btn-danger', :method => :get %>  </div>
+</div>
