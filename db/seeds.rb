@@ -8,8 +8,19 @@ require 'random_data'
 end
 topics = Topic.all
 
+5.times do
+  User.create!(
+
+  name:     RandomData.random_name,
+  email:    RandomData.random_email,
+  # password: RandomData.random_sentence
+  )
+end
+users = User.all
+
 50.times do
   Post.create!(
+    user:   users.sample,
     topic: topics.sample,
     title:  RandomData.random_sentence,
     body:   RandomData.random_paragraph
@@ -25,7 +36,7 @@ posts = Post.all
   )
 end
 sponsoredposts = SponsoredPost.all
-# 
+#
 # 102.times do
 #   Comment.create!(
 #     post: sponsoredposts.sample,
@@ -65,9 +76,14 @@ Comment.find_or_create_by(post: unique_post, body: 'special comment body')
 Comment.find_or_create_by(post: unique_post_2, body: 'special comment body 2')
 Comment.find_or_create_by(post: unique_post_3, body: 'special comment body 3')
 
-
+user = User.first
+user.update_attributes!(
+  email: 'youremail.com', # replace this with your personal email
+  password: 'helloworld'
+)
 
 puts "Seed finished"
+puts "#{User.count} users created"
 puts "#{Topic.count} topics created"
 puts "#{Advertisement.count} advertisements created"
 puts "#{Question.count} questions created"
