@@ -18,6 +18,21 @@ RSpec.describe User, type: :model do
   it { is_expected.to have_secure_password }
   it { is_expected.to validate_length_of(:password).is_at_least(6) }
 
+  describe "#favorite_for(post)" do
+  before do
+    topic = Topic.create!(name: RandomData.random_sentence, description: RandomData.random_paragraph)
+    @post = topic.posts.create!(title: RandomData.random_sentence, body: RandomData.random_paragraph, user: user)
+  end
+
+    expect(user.favorite_for(@post)).to be_nil
+  end
+
+  it "returns the appropriate favorite if it exists" do
+    favorite = user.favorites.where(post: @post).create
+    expect(user.favorite_for(@post)).to eq(favorite)
+  end
+end
+
   describe "attributes" do
     it "should have name and email attributes" do
       expect(user).to have_attributes(name: "Bloccit User", email: "user@bloccit.com")
